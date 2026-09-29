@@ -1,0 +1,15 @@
+services:
+  vahanx-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: vahanx-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrongPasswordHere"
+    ports:
+      - "1445:1433"
+    volumes:
+      - vahanx_sql_data:/var/opt/mssql
+    restart: unless-stopped
+
+volumes:
+  vahanx_sql_data:docker ps
