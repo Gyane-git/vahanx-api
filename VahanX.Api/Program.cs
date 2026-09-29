@@ -70,3 +70,6 @@ app.MapHealthChecks("/health/ready", new Microsoft.AspNetCore.Diagnostics.Health
 });
 
 app.Run();
+
+// Make Program class public for WebApplicationFactory
+public partial class Program { }

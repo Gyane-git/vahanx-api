@@ -1,13 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "YDb5VaHi1L4=",
+  "dgSpecHash": "egPjYtDwe8E=",
   "success": true,
   "projectFilePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/VahanX.Application.csproj",
   "expectedPackageFiles": [
     "/Users/gyanendrashah/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.1/fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.entityframeworkcore/10.0.0/microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.0/microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.0/microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.caching.abstractions/10.0.0/microsoft.extensions.caching.abstractions.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.caching.memory/10.0.0/microsoft.extensions.caching.memory.10.0.0.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.0/microsoft.extensions.configuration.abstractions.10.0.0.nupkg.sha512",
-    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/2.1.0/microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.dependencyinjection/10.0.0/microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.logging/10.0.0/microsoft.extensions.logging.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.0/microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.options/10.0.0/microsoft.extensions.options.10.0.0.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/microsoft.extensions.primitives/10.0.0/microsoft.extensions.primitives.10.0.0.nupkg.sha512"
   ],
   "logs": []

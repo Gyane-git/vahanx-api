@@ -16,6 +16,22 @@ public class VahanXDbContext : DbContext
 
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
+    // Vehicle Core
+    public DbSet<VehicleType> VehicleTypes => Set<VehicleType>();
+    public DbSet<VehicleCategory> VehicleCategories => Set<VehicleCategory>();
+    public DbSet<Brand> Brands => Set<Brand>();
+    public DbSet<Model> Models => Set<Model>();
+    public DbSet<Generation> Generations => Set<Generation>();
+    public DbSet<Variant> Variants => Set<Variant>();
+    public DbSet<BodyType> BodyTypes => Set<BodyType>();
+    public DbSet<FuelType> FuelTypes => Set<FuelType>();
+    public DbSet<TransmissionType> TransmissionTypes => Set<TransmissionType>();
+    public DbSet<VahanX.Domain.Entities.DriveType> DriveTypes => Set<VahanX.Domain.Entities.DriveType>();
+    public DbSet<EngineType> EngineTypes => Set<EngineType>();
+    public DbSet<VehicleFeature> VehicleFeatures => Set<VehicleFeature>();
+    public DbSet<VehicleSpecification> VehicleSpecifications => Set<VehicleSpecification>();
+    public DbSet<Vehicle> Vehicles => Set<Vehicle>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

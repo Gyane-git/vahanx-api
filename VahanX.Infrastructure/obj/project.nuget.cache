@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1PmyOI5CMJ0=",
+  "dgSpecHash": "DshM5lkZeCM=",
   "success": true,
   "projectFilePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -72,9 +72,9 @@
     "/Users/gyanendrashah/.nuget/packages/system.memory.data/8.0.1/system.memory.data.8.0.1.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/system.reflection.metadataloadcontext/7.0.0/system.reflection.metadataloadcontext.7.0.0.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/system.resources.extensions/9.0.0/system.resources.extensions.9.0.0.nupkg.sha512",
-    "/Users/gyanendrashah/.nuget/packages/system.security.cryptography.pkcs/9.0.4/system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/system.security.cryptography.pkcs/10.0.0/system.security.cryptography.pkcs.10.0.0.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/system.security.cryptography.protecteddata/9.0.4/system.security.cryptography.protecteddata.9.0.4.nupkg.sha512",
-    "/Users/gyanendrashah/.nuget/packages/system.security.cryptography.xml/9.0.0/system.security.cryptography.xml.9.0.0.nupkg.sha512",
+    "/Users/gyanendrashah/.nuget/packages/system.security.cryptography.xml/10.0.0/system.security.cryptography.xml.10.0.0.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/system.security.permissions/9.0.0/system.security.permissions.9.0.0.nupkg.sha512",
     "/Users/gyanendrashah/.nuget/packages/system.windows.extensions/9.0.0/system.windows.extensions.9.0.0.nupkg.sha512"
   ],
@@ -82,7 +82,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-23rf-6693-g89p",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-23rf-6693-g89p",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -94,7 +94,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -106,7 +106,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-6588-8gv4-xfgh",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-6588-8gv4-xfgh",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -118,7 +118,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-8q5v-6pqq-x66h",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-8q5v-6pqq-x66h",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -130,7 +130,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-cvvh-rhrc-wg4q",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-cvvh-rhrc-wg4q",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -142,7 +142,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-g8r8-53c2-pm3f",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-g8r8-53c2-pm3f",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -154,7 +154,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-mmjf-rqrv-855v",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-mmjf-rqrv-855v",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
@@ -166,7 +166,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
+      "message": "Package 'System.Security.Cryptography.Xml' 10.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
       "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj",

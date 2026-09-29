@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using VahanX.Application.Common.Interfaces;
 using VahanX.Infrastructure.Persistence;
 using VahanX.Infrastructure.Persistence.Repositories;
 using VahanX.Infrastructure.Services;
@@ -27,6 +28,9 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IAuditLogRepository, AuditLogRepository>();
+
+        // Generic Repository
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         services.AddHealthChecks()
             .AddDbContextCheck<VahanXDbContext>(

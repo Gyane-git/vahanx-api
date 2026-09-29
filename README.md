@@ -185,6 +185,20 @@ Access Swagger UI at:
 | `GET /api/v1/system/info` | System information |
 | `GET /api/v1/health` | Health check |
 | `GET /api/v1/health/ready` | Readiness check |
+| `GET /api/v1/vehicle-types` | Vehicle types |
+| `GET /api/v1/vehicle-categories` | Vehicle categories |
+| `GET /api/v1/brands` | Brands |
+| `GET /api/v1/models` | Models |
+| `GET /api/v1/generations` | Generations |
+| `GET /api/v1/variants` | Variants |
+| `GET /api/v1/vehicles` | Vehicles |
+| `GET /api/v1/master-data/body-types` | Body types |
+| `GET /api/v1/master-data/fuel-types` | Fuel types |
+| `GET /api/v1/master-data/transmissions` | Transmission types |
+| `GET /api/v1/master-data/drive-types` | Drive types |
+| `GET /api/v1/master-data/engine-types` | Engine types |
+| `GET /api/v1/master-data/features` | Vehicle features |
+| `GET /api/v1/master-data/specifications` | Vehicle specifications |
 
 ## Development Workflow
 

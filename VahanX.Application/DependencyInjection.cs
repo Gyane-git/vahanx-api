@@ -16,6 +16,16 @@ public static class DependencyInjection
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddScoped<ISystemInfoService, SystemInfoService>();
 
+        // Vehicle Core Services
+        services.AddScoped<IVehicleTypeService, VehicleTypeService>();
+        services.AddScoped<IVehicleCategoryService, VehicleCategoryService>();
+        services.AddScoped<IBrandService, BrandService>();
+        services.AddScoped<IModelService, ModelService>();
+        services.AddScoped<IGenerationService, GenerationService>();
+        services.AddScoped<IVariantService, VariantService>();
+        services.AddScoped<IVehicleService, VehicleService>();
+        services.AddScoped<IMasterDataService, MasterDataService>();
+
         return services;
     }
 }

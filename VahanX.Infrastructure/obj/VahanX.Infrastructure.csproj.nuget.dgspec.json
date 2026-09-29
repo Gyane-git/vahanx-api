@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[12.1.1, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[10.0.0, )"
@@ -752,6 +756,10 @@
               "version": "[10.0.0, )"
             },
             "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "System.Security.Cryptography.Xml": {
               "target": "Package",
               "version": "[10.0.0, )"
             }
