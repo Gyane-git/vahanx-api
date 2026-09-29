@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+**/.vscode/
+**/node_modules/
+**/.git/
+**/.gitignore
+**/docker-compose.yml
+**/Dockerfile
+**/README.md
+**/docs/
+**/VahanX.Tests/
+**/*.user
+**/*.suo

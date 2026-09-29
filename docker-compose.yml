@@ -1,15 +1,45 @@
 services:
+  vahanx-api:
+    build:
+      context: .
+      dockerfile: VahanX.Api/Dockerfile
+    container_name: vahanx-api
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Server=vahanx-sqlserver,1433;Database=VahanXDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;MultipleActiveResultSets=True;
+    depends_on:
+      vahanx-sqlserver:
+        condition: service_healthy
+    networks:
+      - vahanx-network
+    restart: unless-stopped
+
   vahanx-sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: vahanx-sqlserver
     environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "YourStrongPasswordHere"
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
     ports:
       - "1445:1433"
     volumes:
       - vahanx_sql_data:/var/opt/mssql
+    networks:
+      - vahanx-network
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/sqlcmd -S localhost -U sa -P \"$${MSSQL_SA_PASSWORD}\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
     restart: unless-stopped
 
+networks:
+  vahanx-network:
+    driver: bridge
+
 volumes:
-  vahanx_sql_data:docker ps
+  vahanx_sql_data:
