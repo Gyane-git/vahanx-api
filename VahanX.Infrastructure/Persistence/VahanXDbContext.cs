@@ -78,6 +78,28 @@ public class VahanXDbContext : DbContext
     public DbSet<PushToken> PushTokens => Set<PushToken>();
     public DbSet<NotificationTemplate> NotificationTemplates => Set<NotificationTemplate>();
 
+    // Services & Charging
+    public DbSet<ServiceCenter> ServiceCenters => Set<ServiceCenter>();
+    public DbSet<ServiceCenterBranch> ServiceCenterBranches => Set<ServiceCenterBranch>();
+    public DbSet<AutoServiceType> AutoServiceTypes => Set<AutoServiceType>();
+    public DbSet<ServiceCenterService> ServiceCenterServices => Set<ServiceCenterService>();
+    public DbSet<ServicePackage> ServicePackages => Set<ServicePackage>();
+    public DbSet<ServicePackageItem> ServicePackageItems => Set<ServicePackageItem>();
+    public DbSet<ServiceWorkingHour> ServiceWorkingHours => Set<ServiceWorkingHour>();
+    public DbSet<ServiceBooking> ServiceBookings => Set<ServiceBooking>();
+    public DbSet<ChargingStation> ChargingStations => Set<ChargingStation>();
+    public DbSet<ChargingStationConnector> ChargingStationConnectors => Set<ChargingStationConnector>();
+    public DbSet<ChargingStationAmenity> ChargingStationAmenities => Set<ChargingStationAmenity>();
+    public DbSet<ChargingStationAvailability> ChargingStationAvailability => Set<ChargingStationAvailability>();
+    public DbSet<ChargingStationPrice> ChargingStationPrices => Set<ChargingStationPrice>();
+    public DbSet<FuelStation> FuelStations => Set<FuelStation>();
+    public DbSet<FuelStationFuelType> FuelStationFuelTypes => Set<FuelStationFuelType>();
+    public DbSet<FuelStationAmenity> FuelStationAmenities => Set<FuelStationAmenity>();
+    public DbSet<FuelStationAvailability> FuelStationAvailability => Set<FuelStationAvailability>();
+    public DbSet<FuelStationPrice> FuelStationPrices => Set<FuelStationPrice>();
+    public DbSet<FuelStationWorkingHour> FuelStationWorkingHours => Set<FuelStationWorkingHour>();
+    public DbSet<ServiceReview> ServiceReviews => Set<ServiceReview>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
