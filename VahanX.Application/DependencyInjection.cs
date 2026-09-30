@@ -26,6 +26,21 @@ public static class DependencyInjection
         services.AddScoped<IVehicleService, VehicleService>();
         services.AddScoped<IMasterDataService, MasterDataService>();
 
+        // Marketplace Services
+        services.AddScoped<IListingService, ListingService>();
+        services.AddScoped<ISellerService, SellerService>();
+        services.AddScoped<IDealerService, DealerService>();
+        services.AddScoped<IListingMediaService, ListingMediaService>();
+        services.AddScoped<ISearchService, SearchService>();
+        services.AddScoped<IWishlistService, WishlistService>();
+        services.AddScoped<ICompareService, CompareService>();
+
+        // Trust Services
+        services.AddScoped<IVerificationService, VerificationService>();
+        services.AddScoped<IInspectionService, InspectionService>();
+        services.AddScoped<IVehicleHistoryService, VehicleHistoryService>();
+        services.AddScoped<IReviewService, ReviewService>();
+
         return services;
     }
 }

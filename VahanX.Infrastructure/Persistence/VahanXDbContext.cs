@@ -32,6 +32,39 @@ public class VahanXDbContext : DbContext
     public DbSet<VehicleSpecification> VehicleSpecifications => Set<VehicleSpecification>();
     public DbSet<Vehicle> Vehicles => Set<Vehicle>();
 
+    // Marketplace
+    public DbSet<Location> Locations => Set<Location>();
+    public DbSet<Seller> Sellers => Set<Seller>();
+    public DbSet<Dealer> Dealers => Set<Dealer>();
+    public DbSet<DealerBranch> DealerBranches => Set<DealerBranch>();
+    public DbSet<DealerStaff> DealerStaff => Set<DealerStaff>();
+    public DbSet<VehicleListing> VehicleListings => Set<VehicleListing>();
+    public DbSet<ListingMedia> ListingMedia => Set<ListingMedia>();
+    public DbSet<Wishlist> Wishlists => Set<Wishlist>();
+    public DbSet<WishlistItem> WishlistItems => Set<WishlistItem>();
+    public DbSet<CompareList> CompareLists => Set<CompareList>();
+    public DbSet<CompareItem> CompareItems => Set<CompareItem>();
+
+    // Trust
+    public DbSet<VehicleVerification> VehicleVerifications => Set<VehicleVerification>();
+    public DbSet<VerificationDocument> VerificationDocuments => Set<VerificationDocument>();
+    public DbSet<VehicleVerificationStatusHistory> VehicleVerificationStatusHistory => Set<VehicleVerificationStatusHistory>();
+    public DbSet<Inspection> Inspections => Set<Inspection>();
+    public DbSet<InspectionItem> InspectionItems => Set<InspectionItem>();
+    public DbSet<InspectionReport> InspectionReports => Set<InspectionReport>();
+    public DbSet<InspectionMedia> InspectionMedia => Set<InspectionMedia>();
+    public DbSet<OwnershipHistory> OwnershipHistory => Set<OwnershipHistory>();
+    public DbSet<MileageHistory> MileageHistory => Set<MileageHistory>();
+    public DbSet<ServiceHistory> ServiceHistory => Set<ServiceHistory>();
+    public DbSet<AccidentHistory> AccidentHistory => Set<AccidentHistory>();
+    public DbSet<InsuranceHistory> InsuranceHistory => Set<InsuranceHistory>();
+    public DbSet<RegistrationHistory> RegistrationHistory => Set<RegistrationHistory>();
+    public DbSet<PriceHistory> PriceHistory => Set<PriceHistory>();
+    public DbSet<VehicleReview> VehicleReviews => Set<VehicleReview>();
+    public DbSet<SellerReview> SellerReviews => Set<SellerReview>();
+    public DbSet<DealerReview> DealerReviews => Set<DealerReview>();
+    public DbSet<ReviewReport> ReviewReports => Set<ReviewReport>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
