@@ -92,6 +92,747 @@ namespace VahanX.Infrastructure.Migrations
                     b.ToTable("AccidentHistory", (string)null);
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Advertisement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CampaignId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ChargingStationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DestinationType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DestinationUrl")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<Guid?>("FuelStationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Headline")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("MediaReference")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid?>("ServiceCenterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid?>("VehicleListingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CampaignId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("VehicleListingId");
+
+                    b.ToTable("Advertisements", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementBudget", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("BudgetType")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<Guid>("CampaignId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("PeriodEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PeriodStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("RemainingAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SpentAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CampaignId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("AdvertisementBudgets", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementCampaign", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdvertiserUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("BudgetAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("BudgetType")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<decimal?>("DailyBudget")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid?>("DealerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid?>("SellerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TotalBudget")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertiserUserId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("DealerId");
+
+                    b.HasIndex("EndDate");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SellerId");
+
+                    b.HasIndex("StartDate");
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("AdvertisementCampaigns", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementClick", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdvertisementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PlacementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SessionReference")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertisementId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("OccurredAt");
+
+                    b.ToTable("AdvertisementClicks", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementCreative", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdvertisementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AltText")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("MediaReference")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<string>("MediaType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertisementId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("AdvertisementCreatives", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementImpression", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdvertisementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PlacementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SessionReference")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertisementId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("OccurredAt");
+
+                    b.ToTable("AdvertisementImpressions", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementPlacement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("MaxAdsPerRequest")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("PlacementType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("AdvertisementPlacements", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementTargeting", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdvertisementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("TargetType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TargetValue")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertisementId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("AdvertisementTargeting", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Announcement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("EndAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("EndAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Priority");
+
+                    b.HasIndex("StartAt");
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("Announcements", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Article", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AuthorUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SeoDescription")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SeoTitle")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Summary")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PublishedAt");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("Articles", (string)null);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -100,6 +841,17 @@ namespace VahanX.Infrastructure.Migrations
 
                     b.Property<int>("Action")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("ActorUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Changes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CorrelationId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -116,14 +868,17 @@ namespace VahanX.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EntityId")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("EntityType")
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("EntityName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<string>("FailureReason")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("IpAddress")
                         .HasMaxLength(45)
@@ -140,6 +895,9 @@ namespace VahanX.Infrastructure.Migrations
                     b.Property<string>("OldValues")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Result")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
@@ -155,24 +913,25 @@ namespace VahanX.Infrastructure.Migrations
                         .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("UserId")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Action");
 
+                    b.HasIndex("ActorUserId");
+
+                    b.HasIndex("CorrelationId");
+
                     b.HasIndex("CreatedAt");
 
                     b.HasIndex("EntityId");
 
-                    b.HasIndex("EntityName");
+                    b.HasIndex("EntityType");
 
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("Timestamp");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("AuditLogs", (string)null);
                 });
@@ -248,6 +1007,100 @@ namespace VahanX.Infrastructure.Migrations
                     b.HasIndex("VehicleTypeId");
 
                     b.ToTable("ServiceTypes", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Banner", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DesktopMediaReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("MediaReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("MobileMediaReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Placement")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("StartAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subtitle")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("TargetReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("EndAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Placement");
+
+                    b.HasIndex("StartAt");
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("Banners", (string)null);
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.BodyType", b =>
@@ -880,6 +1733,194 @@ namespace VahanX.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("CompareLists", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ContentCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("ContentCategories", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ContentMedia", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Caption")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("ContentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("MediaReference")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ContentId", "ContentType");
+
+                    b.ToTable("ContentMedia", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ContentTag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("ContentTags", (string)null);
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.Conversation", b =>
@@ -1542,6 +2583,141 @@ namespace VahanX.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Enquiries", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.FAQ", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("IsPublished");
+
+                    b.ToTable("FAQs", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Feature", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("FeatureType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Unit")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Features", (string)null);
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.FuelStation", b =>
@@ -2457,6 +3633,252 @@ namespace VahanX.Infrastructure.Migrations
                     b.ToTable("InsuranceHistory", (string)null);
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Invoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("DueAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InvoiceNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("PaidAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Subtotal")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TaxAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("InvoiceNumber")
+                        .IsUnique();
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Invoices", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.InvoiceItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TaxAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("InvoiceItems", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ListingAnalytics", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("AverageDailyViews")
+                        .HasColumnType("float");
+
+                    b.Property<long>("CompareAdds")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ContactRequests")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<long>("Enquiries")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastViewedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ListingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("Shares")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TestDriveRequests")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UniqueViews")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<long>("Views")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("WishlistAdds")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("LastViewedAt");
+
+                    b.HasIndex("ListingId")
+                        .IsUnique();
+
+                    b.ToTable("ListingAnalytics", (string)null);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.ListingMedia", b =>
                 {
                     b.Property<Guid>("Id")
@@ -2879,6 +4301,227 @@ namespace VahanX.Infrastructure.Migrations
                     b.ToTable("Models", (string)null);
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.ModerationAction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ActionType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("ModerationCaseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<Guid>("PerformedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("TargetId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActionType");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ModerationCaseId");
+
+                    b.HasIndex("PerformedByUserId");
+
+                    b.ToTable("ModerationActions", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ModerationCase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AssignedToUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("ReportId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ResolutionNote")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int?>("ResolutionType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ResolvedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("StartedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TargetId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssignedToUserId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Priority");
+
+                    b.HasIndex("ReportId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("TargetType", "TargetId");
+
+                    b.ToTable("ModerationCases", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ModerationHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Action")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ChangedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("ModerationCaseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("NewStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OldStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChangedAt");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ModerationCaseId");
+
+                    b.ToTable("ModerationHistory", (string)null);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.Notification", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3160,6 +4803,497 @@ namespace VahanX.Infrastructure.Migrations
                     b.ToTable("OwnershipHistory", (string)null);
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Page", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SeoDescription")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SeoTitle")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Summary")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid?>("UpdatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("Pages", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Payment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("FailedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FailureReason")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("IdempotencyKey")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("PaymentPurpose")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentReference")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Provider")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProviderPaymentReference")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TaxAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PaymentReference")
+                        .IsUnique();
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Payments", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PaymentItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("ItemType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReferenceId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PaymentId");
+
+                    b.ToTable("PaymentItems", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PaymentRefund", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ProviderRefundReference")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PaymentId");
+
+                    b.ToTable("PaymentRefunds", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PaymentTransaction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Provider")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ProviderTransactionReference")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("RawResponseReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("TransactionType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("ProviderTransactionReference");
+
+                    b.ToTable("PaymentTransactions", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PlatformAnalytics", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ActiveAdvertisements")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActiveSubscriptions")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActiveUsers")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Enquiries")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("NewUsers")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PublishedListings")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Revenue")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("SellRequests")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceBookings")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalListings")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("Date")
+                        .IsUnique();
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("PlatformAnalytics", (string)null);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.PriceHistory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3229,6 +5363,86 @@ namespace VahanX.Infrastructure.Migrations
                     b.HasIndex("ListingId");
 
                     b.ToTable("PriceHistory", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Promotion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("MediaReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("StartAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TargetReference")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("EndAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("StartAt");
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("Promotions", (string)null);
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.PushToken", b =>
@@ -3366,6 +5580,160 @@ namespace VahanX.Infrastructure.Migrations
                     b.ToTable("RegistrationHistory", (string)null);
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Report", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AssignedToUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ReportReasonId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ReporterUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ResolutionNote")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime?>("ResolvedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TargetId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssignedToUserId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("Priority");
+
+                    b.HasIndex("ReporterUserId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("TargetType", "TargetId");
+
+                    b.ToTable("Reports", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.ReportReason", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("TargetType");
+
+                    b.ToTable("ReportReasons", (string)null);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.ReviewReport", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3424,6 +5792,389 @@ namespace VahanX.Infrastructure.Migrations
                     b.HasIndex("ReviewId");
 
                     b.ToTable("ReviewReports", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SearchAnalytics", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Filters")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("ResultCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SearchQuery")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SearchAnalytics", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellOffer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("AcceptedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<decimal>("OfferedAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid?>("OfferedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("RejectedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("SellRequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("ValidUntil")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SellRequestId");
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("SellOffers", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ClosedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid?>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("PreferredContactMethod")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PreferredContactTime")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid>("SellVehicleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SellRequests", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellRequestStatusHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("ChangedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int>("NewStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OldStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<Guid>("SellRequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChangedAt");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SellRequestId");
+
+                    b.ToTable("SellRequestStatusHistory", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellVehicle", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal?>("AskingPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("BrandId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Condition")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("FuelTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid?>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ManufactureYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Mileage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MileageUnit")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<Guid>("ModelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("RegistrationYear")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SellRequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("TransmissionTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid?>("VariantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("VehicleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("VehicleTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("FuelTypeId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("ModelId");
+
+                    b.HasIndex("SellRequestId")
+                        .IsUnique();
+
+                    b.HasIndex("TransmissionTypeId");
+
+                    b.HasIndex("VariantId");
+
+                    b.HasIndex("VehicleId");
+
+                    b.HasIndex("VehicleTypeId");
+
+                    b.ToTable("SellVehicles", (string)null);
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.Seller", b =>
@@ -4297,6 +7048,405 @@ namespace VahanX.Infrastructure.Migrations
                     b.ToTable("ServiceWorkingHours", (string)null);
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Subscription", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("AutoRenew")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("CancellationReason")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime?>("CancelledAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CurrentPeriodEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CurrentPeriodStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DealerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExternalSubscriptionReference")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid?>("SellerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SubscriptionPlanId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("TrialEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TrialStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("DealerId");
+
+                    b.HasIndex("EndDate");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SellerId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("SubscriptionPlanId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Subscriptions", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionChangeHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ChangeType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("ChangedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid?>("NewPlanId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("NewStatus")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("OldPlanId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("OldStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Reason")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<Guid>("SubscriptionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChangedAt");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SubscriptionId");
+
+                    b.ToTable("SubscriptionChangeHistory", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionPlan", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("BillingCycle")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("IsPublic")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrialDays")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("TargetType");
+
+                    b.ToTable("SubscriptionPlans", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionPlanFeature", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool?>("BooleanValue")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("FeatureId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<int?>("LimitValue")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("NumericValue")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("SubscriptionPlanId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("FeatureId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SubscriptionPlanId", "FeatureId")
+                        .IsUnique();
+
+                    b.ToTable("SubscriptionPlanFeatures", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionUsage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("FeatureId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime>("LastCalculatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LimitValue")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PeriodEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PeriodStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("SubscriptionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UsedValue")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("FeatureId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SubscriptionId", "FeatureId", "PeriodStart")
+                        .IsUnique();
+
+                    b.ToTable("SubscriptionUsage", (string)null);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.TestDrive", b =>
                 {
                     b.Property<Guid>("Id")
@@ -4523,6 +7673,151 @@ namespace VahanX.Infrastructure.Migrations
                     b.HasIndex("Name");
 
                     b.ToTable("TransmissionTypes", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastLoginAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.UserRestriction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("EndsAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("RestrictionType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartsAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("EndsAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRestrictions", (string)null);
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.Variant", b =>
@@ -5563,6 +8858,104 @@ namespace VahanX.Infrastructure.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Advertisement", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.AdvertisementCampaign", "Campaign")
+                        .WithMany("Advertisements")
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.VehicleListing", "VehicleListing")
+                        .WithMany()
+                        .HasForeignKey("VehicleListingId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Campaign");
+
+                    b.Navigation("VehicleListing");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementBudget", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.AdvertisementCampaign", "Campaign")
+                        .WithMany("Budgets")
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campaign");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementCampaign", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Dealer", "Dealer")
+                        .WithMany()
+                        .HasForeignKey("DealerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.Seller", "Seller")
+                        .WithMany()
+                        .HasForeignKey("SellerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Dealer");
+
+                    b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementClick", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Advertisement", "Advertisement")
+                        .WithMany()
+                        .HasForeignKey("AdvertisementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advertisement");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementCreative", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Advertisement", "Advertisement")
+                        .WithMany("Creatives")
+                        .HasForeignKey("AdvertisementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advertisement");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementImpression", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Advertisement", "Advertisement")
+                        .WithMany()
+                        .HasForeignKey("AdvertisementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advertisement");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementTargeting", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Advertisement", "Advertisement")
+                        .WithMany("Targeting")
+                        .HasForeignKey("AdvertisementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advertisement");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Article", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.ContentCategory", null)
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.AutoServiceType", b =>
                 {
                     b.HasOne("VahanX.Domain.Entities.VehicleType", "VehicleType")
@@ -5756,6 +9149,14 @@ namespace VahanX.Infrastructure.Migrations
                     b.Navigation("Seller");
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.FAQ", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.ContentCategory", null)
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.FuelStation", b =>
                 {
                     b.HasOne("VahanX.Domain.Entities.Location", "Location")
@@ -5915,6 +9316,28 @@ namespace VahanX.Infrastructure.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Invoice", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.InvoiceItem", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Invoice", "Invoice")
+                        .WithMany("Items")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Invoice");
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.ListingMedia", b =>
                 {
                     b.HasOne("VahanX.Domain.Entities.VehicleListing", "Listing")
@@ -5970,6 +9393,14 @@ namespace VahanX.Infrastructure.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.ModerationCase", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Report", null)
+                        .WithMany()
+                        .HasForeignKey("ReportId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.OwnershipHistory", b =>
                 {
                     b.HasOne("VahanX.Domain.Entities.Vehicle", "Vehicle")
@@ -5979,6 +9410,39 @@ namespace VahanX.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PaymentItem", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Payment", "Payment")
+                        .WithMany("Items")
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PaymentRefund", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.PaymentTransaction", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Payment", "Payment")
+                        .WithMany("Transactions")
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.PriceHistory", b =>
@@ -6001,6 +9465,109 @@ namespace VahanX.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellOffer", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.SellRequest", "SellRequest")
+                        .WithMany("Offers")
+                        .HasForeignKey("SellRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SellRequest");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellRequest", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellRequestStatusHistory", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.SellRequest", "SellRequest")
+                        .WithMany("StatusHistory")
+                        .HasForeignKey("SellRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SellRequest");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellVehicle", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.FuelType", "FuelType")
+                        .WithMany()
+                        .HasForeignKey("FuelTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.Model", "Model")
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.SellRequest", "SellRequest")
+                        .WithOne("SellVehicle")
+                        .HasForeignKey("VahanX.Domain.Entities.SellVehicle", "SellRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.TransmissionType", "TransmissionType")
+                        .WithMany()
+                        .HasForeignKey("TransmissionTypeId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.Variant", "Variant")
+                        .WithMany()
+                        .HasForeignKey("VariantId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.VehicleType", "VehicleType")
+                        .WithMany()
+                        .HasForeignKey("VehicleTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("FuelType");
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Model");
+
+                    b.Navigation("SellRequest");
+
+                    b.Navigation("TransmissionType");
+
+                    b.Navigation("Variant");
+
+                    b.Navigation("Vehicle");
+
+                    b.Navigation("VehicleType");
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.Seller", b =>
@@ -6186,6 +9753,80 @@ namespace VahanX.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("ServiceCenterBranch");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Subscription", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Dealer", "Dealer")
+                        .WithMany()
+                        .HasForeignKey("DealerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.Seller", "Seller")
+                        .WithMany()
+                        .HasForeignKey("SellerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("VahanX.Domain.Entities.SubscriptionPlan", "SubscriptionPlan")
+                        .WithMany()
+                        .HasForeignKey("SubscriptionPlanId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Dealer");
+
+                    b.Navigation("Seller");
+
+                    b.Navigation("SubscriptionPlan");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionChangeHistory", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Subscription", "Subscription")
+                        .WithMany("ChangeHistory")
+                        .HasForeignKey("SubscriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subscription");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionPlanFeature", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Feature", "Feature")
+                        .WithMany()
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.SubscriptionPlan", "SubscriptionPlan")
+                        .WithMany("PlanFeatures")
+                        .HasForeignKey("SubscriptionPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+
+                    b.Navigation("SubscriptionPlan");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionUsage", b =>
+                {
+                    b.HasOne("VahanX.Domain.Entities.Feature", "Feature")
+                        .WithMany()
+                        .HasForeignKey("FeatureId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("VahanX.Domain.Entities.Subscription", "Subscription")
+                        .WithMany("Usage")
+                        .HasForeignKey("SubscriptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feature");
+
+                    b.Navigation("Subscription");
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.TestDrive", b =>
@@ -6443,6 +10084,20 @@ namespace VahanX.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Advertisement", b =>
+                {
+                    b.Navigation("Creatives");
+
+                    b.Navigation("Targeting");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.AdvertisementCampaign", b =>
+                {
+                    b.Navigation("Advertisements");
+
+                    b.Navigation("Budgets");
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.BodyType", b =>
                 {
                     b.Navigation("Vehicles");
@@ -6527,6 +10182,11 @@ namespace VahanX.Infrastructure.Migrations
                     b.Navigation("Report");
                 });
 
+            modelBuilder.Entity("VahanX.Domain.Entities.Invoice", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("VahanX.Domain.Entities.Message", b =>
                 {
                     b.Navigation("Attachments");
@@ -6535,6 +10195,22 @@ namespace VahanX.Infrastructure.Migrations
             modelBuilder.Entity("VahanX.Domain.Entities.Model", b =>
                 {
                     b.Navigation("Generations");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Payment", b =>
+                {
+                    b.Navigation("Items");
+
+                    b.Navigation("Transactions");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SellRequest", b =>
+                {
+                    b.Navigation("Offers");
+
+                    b.Navigation("SellVehicle");
+
+                    b.Navigation("StatusHistory");
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.Seller", b =>
@@ -6561,6 +10237,18 @@ namespace VahanX.Infrastructure.Migrations
             modelBuilder.Entity("VahanX.Domain.Entities.ServicePackage", b =>
                 {
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.Subscription", b =>
+                {
+                    b.Navigation("ChangeHistory");
+
+                    b.Navigation("Usage");
+                });
+
+            modelBuilder.Entity("VahanX.Domain.Entities.SubscriptionPlan", b =>
+                {
+                    b.Navigation("PlanFeatures");
                 });
 
             modelBuilder.Entity("VahanX.Domain.Entities.TransmissionType", b =>

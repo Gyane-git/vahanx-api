@@ -60,16 +60,15 @@ public class BaseEntityTests
     {
         var auditLog = new AuditLog
         {
-            UserId = "user-123",
+            ActorUserId = Guid.NewGuid(),
             Action = Domain.Enums.AuditAction.Create,
-            EntityName = "Vehicle",
+            EntityType = "Vehicle",
             EntityId = "vehicle-123",
             Timestamp = DateTime.UtcNow
         };
 
-        Assert.Equal("user-123", auditLog.UserId);
         Assert.Equal(Domain.Enums.AuditAction.Create, auditLog.Action);
-        Assert.Equal("Vehicle", auditLog.EntityName);
+        Assert.Equal("Vehicle", auditLog.EntityType);
         Assert.Equal("vehicle-123", auditLog.EntityId);
     }
 }

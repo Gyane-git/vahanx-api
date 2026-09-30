@@ -53,6 +53,20 @@ public static class DependencyInjection
         services.AddScoped<IChargingStationService, ChargingStationService>();
         services.AddScoped<IFuelStationService, FuelStationService>();
 
+        // Business & Monetization Services
+        services.AddScoped<IFeatureService, FeatureService>();
+        services.AddScoped<ISubscriptionService, SubscriptionService>();
+        services.AddScoped<IAdvertisementService, AdvertisementService>();
+        services.AddScoped<ISellVehicleService, SellVehicleService>();
+        services.AddScoped<IPaymentService, PaymentService>();
+
+        // Phase 9: Admin, Moderation, Analytics, Audit, CMS
+        services.AddScoped<IAdminDashboardService, AdminDashboardService>();
+        services.AddScoped<IModerationService, ModerationService>();
+        services.AddScoped<IAnalyticsService, AnalyticsService>();
+        services.AddScoped<IAuditService, AuditService>();
+        services.AddScoped<ICmsService, CmsService>();
+
         return services;
     }
 }

@@ -1,12 +1,14 @@
 namespace VahanX.Domain.Enums;
 
 /// <summary>
-/// Inspection report status.
+/// Status lifecycle for moderation reports.
 /// </summary>
-public enum ReportStatus
+public enum ModerationReportStatus
 {
-    Draft = 0,
-    Generated = 1,
-    Finalized = 2,
-    Archived = 3
+    Pending = 0,
+    UnderReview = 1,
+    Resolved = 2,
+    Rejected = 3,
+    Dismissed = 4,
+    Escalated = 5
 }

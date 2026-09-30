@@ -15,25 +15,27 @@ public class AuditLogConfiguration : BaseEntityConfiguration<AuditLog>
 
         builder.ToTable("AuditLogs");
 
-        builder.Property(e => e.UserId)
-            .HasMaxLength(450)
+        builder.Property(e => e.ActorUserId)
             .IsRequired(false);
 
         builder.Property(e => e.Action)
             .IsRequired();
 
-        builder.Property(e => e.EntityName)
+        builder.Property(e => e.EntityType)
             .HasMaxLength(256)
             .IsRequired();
 
         builder.Property(e => e.EntityId)
             .HasMaxLength(256)
-            .IsRequired();
+            .IsRequired(false);
 
         builder.Property(e => e.OldValues)
             .IsRequired(false);
 
         builder.Property(e => e.NewValues)
+            .IsRequired(false);
+
+        builder.Property(e => e.Changes)
             .IsRequired(false);
 
         builder.Property(e => e.IpAddress)
@@ -44,13 +46,25 @@ public class AuditLogConfiguration : BaseEntityConfiguration<AuditLog>
             .HasMaxLength(512)
             .IsRequired(false);
 
+        builder.Property(e => e.CorrelationId)
+            .HasMaxLength(100)
+            .IsRequired();
+
         builder.Property(e => e.Timestamp)
             .IsRequired();
 
-        builder.HasIndex(e => e.UserId);
-        builder.HasIndex(e => e.EntityName);
+        builder.Property(e => e.Result)
+            .IsRequired();
+
+        builder.Property(e => e.FailureReason)
+            .HasMaxLength(500)
+            .IsRequired(false);
+
+        builder.HasIndex(e => e.ActorUserId);
+        builder.HasIndex(e => e.EntityType);
         builder.HasIndex(e => e.EntityId);
         builder.HasIndex(e => e.Timestamp);
         builder.HasIndex(e => e.Action);
+        builder.HasIndex(e => e.CorrelationId);
     }
 }

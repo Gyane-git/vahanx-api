@@ -22,18 +22,18 @@ public class AuditLogRepository : IAuditLogRepository
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IReadOnlyList<AuditLog>> GetByEntityAsync(string entityName, string entityId, CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<AuditLog>> GetByEntityAsync(string entityType, string entityId, CancellationToken cancellationToken = default)
     {
         return await _context.AuditLogs
-            .Where(a => a.EntityName == entityName && a.EntityId == entityId)
+            .Where(a => a.EntityType == entityType && a.EntityId == entityId)
             .OrderByDescending(a => a.Timestamp)
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<IReadOnlyList<AuditLog>> GetByUserAsync(string userId, CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<AuditLog>> GetByUserAsync(Guid userId, CancellationToken cancellationToken = default)
     {
         return await _context.AuditLogs
-            .Where(a => a.UserId == userId)
+            .Where(a => a.ActorUserId == userId)
             .OrderByDescending(a => a.Timestamp)
             .ToListAsync(cancellationToken);
     }

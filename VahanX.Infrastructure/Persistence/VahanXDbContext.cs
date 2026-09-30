@@ -16,6 +16,9 @@ public class VahanXDbContext : DbContext
 
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
+    // Identity
+    public DbSet<User> Users => Set<User>();
+
     // Vehicle Core
     public DbSet<VehicleType> VehicleTypes => Set<VehicleType>();
     public DbSet<VehicleCategory> VehicleCategories => Set<VehicleCategory>();
@@ -99,6 +102,56 @@ public class VahanXDbContext : DbContext
     public DbSet<FuelStationPrice> FuelStationPrices => Set<FuelStationPrice>();
     public DbSet<FuelStationWorkingHour> FuelStationWorkingHours => Set<FuelStationWorkingHour>();
     public DbSet<ServiceReview> ServiceReviews => Set<ServiceReview>();
+
+    // Business & Monetization
+    public DbSet<Feature> Features => Set<Feature>();
+    public DbSet<SubscriptionPlan> SubscriptionPlans => Set<SubscriptionPlan>();
+    public DbSet<SubscriptionPlanFeature> SubscriptionPlanFeatures => Set<SubscriptionPlanFeature>();
+    public DbSet<Subscription> Subscriptions => Set<Subscription>();
+    public DbSet<SubscriptionUsage> SubscriptionUsage => Set<SubscriptionUsage>();
+    public DbSet<SubscriptionChangeHistory> SubscriptionChangeHistory => Set<SubscriptionChangeHistory>();
+    public DbSet<AdvertisementCampaign> AdvertisementCampaigns => Set<AdvertisementCampaign>();
+    public DbSet<Advertisement> Advertisements => Set<Advertisement>();
+    public DbSet<AdvertisementCreative> AdvertisementCreatives => Set<AdvertisementCreative>();
+    public DbSet<AdvertisementPlacement> AdvertisementPlacements => Set<AdvertisementPlacement>();
+    public DbSet<AdvertisementTargeting> AdvertisementTargeting => Set<AdvertisementTargeting>();
+    public DbSet<AdvertisementBudget> AdvertisementBudgets => Set<AdvertisementBudget>();
+    public DbSet<AdvertisementImpression> AdvertisementImpressions => Set<AdvertisementImpression>();
+    public DbSet<AdvertisementClick> AdvertisementClicks => Set<AdvertisementClick>();
+    public DbSet<SellRequest> SellRequests => Set<SellRequest>();
+    public DbSet<SellVehicle> SellVehicles => Set<SellVehicle>();
+    public DbSet<SellOffer> SellOffers => Set<SellOffer>();
+    public DbSet<SellRequestStatusHistory> SellRequestStatusHistory => Set<SellRequestStatusHistory>();
+    public DbSet<Payment> Payments => Set<Payment>();
+    public DbSet<PaymentItem> PaymentItems => Set<PaymentItem>();
+    public DbSet<PaymentTransaction> PaymentTransactions => Set<PaymentTransaction>();
+    public DbSet<PaymentRefund> PaymentRefunds => Set<PaymentRefund>();
+    public DbSet<Invoice> Invoices => Set<Invoice>();
+    public DbSet<InvoiceItem> InvoiceItems => Set<InvoiceItem>();
+
+    // Phase 9: Moderation
+    public DbSet<ReportReason> ReportReasons => Set<ReportReason>();
+    public DbSet<Report> Reports => Set<Report>();
+    public DbSet<ModerationCase> ModerationCases => Set<ModerationCase>();
+    public DbSet<ModerationAction> ModerationActions => Set<ModerationAction>();
+    public DbSet<ModerationHistory> ModerationHistory => Set<ModerationHistory>();
+    public DbSet<UserRestriction> UserRestrictions => Set<UserRestriction>();
+
+    // Phase 9: Analytics
+    public DbSet<ListingAnalytics> ListingAnalytics => Set<ListingAnalytics>();
+    public DbSet<SearchAnalytics> SearchAnalytics => Set<SearchAnalytics>();
+    public DbSet<PlatformAnalytics> PlatformAnalytics => Set<PlatformAnalytics>();
+
+    // Phase 9: CMS
+    public DbSet<ContentCategory> ContentCategories => Set<ContentCategory>();
+    public DbSet<ContentTag> ContentTags => Set<ContentTag>();
+    public DbSet<Page> Pages => Set<Page>();
+    public DbSet<Article> Articles => Set<Article>();
+    public DbSet<FAQ> FAQs => Set<FAQ>();
+    public DbSet<Banner> Banners => Set<Banner>();
+    public DbSet<Promotion> Promotions => Set<Promotion>();
+    public DbSet<Announcement> Announcements => Set<Announcement>();
+    public DbSet<ContentMedia> ContentMedia => Set<ContentMedia>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
