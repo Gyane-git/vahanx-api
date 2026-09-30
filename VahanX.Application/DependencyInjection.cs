@@ -41,6 +41,12 @@ public static class DependencyInjection
         services.AddScoped<IVehicleHistoryService, VehicleHistoryService>();
         services.AddScoped<IReviewService, ReviewService>();
 
+        // Engagement Services
+        services.AddScoped<IEnquiryService, EnquiryService>();
+        services.AddScoped<IConversationService, ConversationService>();
+        services.AddScoped<ITestDriveService, TestDriveService>();
+        services.AddScoped<INotificationService, NotificationService>();
+
         return services;
     }
 }

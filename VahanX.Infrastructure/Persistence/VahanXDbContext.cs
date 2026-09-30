@@ -65,6 +65,19 @@ public class VahanXDbContext : DbContext
     public DbSet<DealerReview> DealerReviews => Set<DealerReview>();
     public DbSet<ReviewReport> ReviewReports => Set<ReviewReport>();
 
+    // Engagement
+    public DbSet<Enquiry> Enquiries => Set<Enquiry>();
+    public DbSet<Conversation> Conversations => Set<Conversation>();
+    public DbSet<ConversationParticipant> ConversationParticipants => Set<ConversationParticipant>();
+    public DbSet<Message> Messages => Set<Message>();
+    public DbSet<MessageAttachment> MessageAttachments => Set<MessageAttachment>();
+    public DbSet<TestDrive> TestDrives => Set<TestDrive>();
+    public DbSet<TestDriveSlot> TestDriveSlots => Set<TestDriveSlot>();
+    public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<NotificationPreference> NotificationPreferences => Set<NotificationPreference>();
+    public DbSet<PushToken> PushTokens => Set<PushToken>();
+    public DbSet<NotificationTemplate> NotificationTemplates => Set<NotificationTemplate>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
