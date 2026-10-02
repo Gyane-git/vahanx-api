@@ -8,19 +8,19 @@
     "net10.0": []
   },
   "packageFolders": {
-    "/Users/gyanendrashah/.nuget/packages/": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/VahanX.Domain.csproj",
+      "projectUniqueName": "/src/VahanX.Domain/VahanX.Domain.csproj",
       "projectName": "VahanX.Domain",
-      "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/VahanX.Domain.csproj",
-      "packagesPath": "/Users/gyanendrashah/.nuget/packages/",
-      "outputPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/",
+      "projectPath": "/src/VahanX.Domain/VahanX.Domain.csproj",
+      "packagesPath": "/root/.nuget/packages/",
+      "outputPath": "/src/VahanX.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/gyanendrashah/.nuget/NuGet/NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -67,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/gyanendrashah/.dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

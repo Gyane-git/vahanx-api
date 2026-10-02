@@ -4755,19 +4755,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/gyanendrashah/.nuget/packages/": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Api/VahanX.Api.csproj",
+      "projectUniqueName": "/src/VahanX.Api/VahanX.Api.csproj",
       "projectName": "VahanX.Api",
-      "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Api/VahanX.Api.csproj",
-      "packagesPath": "/Users/gyanendrashah/.nuget/packages/",
-      "outputPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Api/obj/",
+      "projectPath": "/src/VahanX.Api/VahanX.Api.csproj",
+      "packagesPath": "/root/.nuget/packages/",
+      "outputPath": "/src/VahanX.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/gyanendrashah/.nuget/NuGet/NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -4780,11 +4780,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/VahanX.Application.csproj": {
-              "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/VahanX.Application.csproj"
+            "/src/VahanX.Application/VahanX.Application.csproj": {
+              "projectPath": "/src/VahanX.Application/VahanX.Application.csproj"
             },
-            "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj": {
-              "projectPath": "/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/VahanX.Infrastructure.csproj"
+            "/src/VahanX.Infrastructure/VahanX.Infrastructure.csproj": {
+              "projectPath": "/src/VahanX.Infrastructure/VahanX.Infrastructure.csproj"
             }
           }
         }
@@ -4856,7 +4856,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/gyanendrashah/.dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
