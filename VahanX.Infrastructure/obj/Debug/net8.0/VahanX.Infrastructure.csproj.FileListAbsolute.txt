@@ -11,6 +11,7 @@
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/VahanX.Infrastructure.AssemblyInfoInputs.cache
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/VahanX.Infrastructure.AssemblyInfo.cs
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/VahanX.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/VahanX.Infrastructure.sourcelink.json
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/VahanX.I.FD32F3EC.Up2Date
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/VahanX.Infrastructure.dll
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Infrastructure/obj/Debug/net8.0/refint/VahanX.Infrastructure.dll

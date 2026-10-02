@@ -5,6 +5,7 @@
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/VahanX.Domain.AssemblyInfoInputs.cache
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/VahanX.Domain.AssemblyInfo.cs
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/VahanX.Domain.csproj.CoreCompileInputs.cache
+/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/VahanX.Domain.sourcelink.json
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/VahanX.Domain.dll
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/refint/VahanX.Domain.dll
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Domain/obj/Debug/net8.0/VahanX.Domain.pdb

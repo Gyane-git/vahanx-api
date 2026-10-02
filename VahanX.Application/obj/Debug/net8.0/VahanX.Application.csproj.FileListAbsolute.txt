@@ -8,6 +8,7 @@
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/VahanX.Application.AssemblyInfoInputs.cache
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/VahanX.Application.AssemblyInfo.cs
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/VahanX.Application.csproj.CoreCompileInputs.cache
+/Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/VahanX.Application.sourcelink.json
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/VahanX.A.4C3FE01E.Up2Date
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/VahanX.Application.dll
 /Users/gyanendrashah/Documents/DevMind/vahanx-api/VahanX.Application/obj/Debug/net8.0/refint/VahanX.Application.dll
