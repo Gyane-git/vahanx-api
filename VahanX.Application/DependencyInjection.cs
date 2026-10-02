@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using VahanX.Application.Common.Interfaces;
@@ -65,7 +66,16 @@ public static class DependencyInjection
         services.AddScoped<IModerationService, ModerationService>();
         services.AddScoped<IAnalyticsService, AnalyticsService>();
         services.AddScoped<IAuditService, AuditService>();
+        // CMS
         services.AddScoped<ICmsService, CmsService>();
+
+        // Authentication & Access Control
+        services.AddScoped<IPasswordHasher<VahanX.Domain.Entities.User>, PasswordHasher<VahanX.Domain.Entities.User>>();
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IUserManagementService, UserManagementService>();
+        services.AddScoped<IRoleManagementService, RoleManagementService>();
+        services.AddScoped<IPermissionManagementService, PermissionManagementService>();
 
         return services;
     }

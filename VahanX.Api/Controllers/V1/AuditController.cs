@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VahanX.Application.Common;
 using VahanX.Application.Common.Interfaces;
 using VahanX.Application.DTOs.Audit;
 using VahanX.Domain.Enums;
+using VahanX.Application.DTOs.Admin;
 
 namespace VahanX.Api.Controllers.V1;
 
@@ -10,6 +12,7 @@ namespace VahanX.Api.Controllers.V1;
 /// Controller for audit log operations.
 /// </summary>
 [ApiController]
+[Authorize(Policy = AdminPermissions.AuditView)]
 [Route("api/v{version:apiVersion}/admin/audit")]
 [ApiVersion("1.0")]
 public class AuditController : ControllerBase

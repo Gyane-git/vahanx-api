@@ -1,7 +1,13 @@
+using System.Reflection;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.IdentityModel.Tokens;
 using VahanX.Api.Configuration;
 using VahanX.Api.Filters;
+using VahanX.Application.Common;
+using VahanX.Application.DTOs.Admin;
 
 namespace VahanX.Api.Extensions;
 
@@ -57,6 +63,39 @@ public static class ServiceCollectionExtensions
                     policy.DisallowCredentials();
                 }
             });
+        });
+
+        var jwtSettings = configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>() ?? new JwtSettings();
+
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtSettings.Issuer,
+                ValidateAudience = true,
+                ValidAudience = jwtSettings.Audience,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SigningKey)),
+                ClockSkew = TimeSpan.FromMinutes(1)
+            };
+        });
+
+        services.AddAuthorization(options =>
+        {
+            foreach (var field in typeof(AdminPermissions).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy))
+            {
+                if (field.GetValue(null) is string permission)
+                {
+                    options.AddPolicy(permission, policy => policy.RequireClaim("permission", permission));
+                }
+            }
         });
 
         return services;

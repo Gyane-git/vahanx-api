@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VahanX.Application.Common;
 using VahanX.Application.Common.Interfaces;
@@ -9,6 +10,7 @@ namespace VahanX.Api.Controllers.V1;
 /// Controller for admin dashboard operations.
 /// </summary>
 [ApiController]
+[Authorize(Policy = AdminPermissions.AnalyticsView)]
 [Route("api/v{version:apiVersion}/admin")]
 [ApiVersion("1.0")]
 public class AdminController : ControllerBase

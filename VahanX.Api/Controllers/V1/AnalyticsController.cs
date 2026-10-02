@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VahanX.Application.Common;
 using VahanX.Application.Common.Interfaces;
 using VahanX.Application.DTOs.Analytics;
+using VahanX.Application.DTOs.Admin;
 
 namespace VahanX.Api.Controllers.V1;
 
@@ -9,6 +11,7 @@ namespace VahanX.Api.Controllers.V1;
 /// Controller for analytics operations.
 /// </summary>
 [ApiController]
+[Authorize(Policy = AdminPermissions.AnalyticsView)]
 [Route("api/v{version:apiVersion}/admin/analytics")]
 [ApiVersion("1.0")]
 public class AnalyticsController : ControllerBase

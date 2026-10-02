@@ -16,8 +16,14 @@ public class VahanXDbContext : DbContext
 
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
-    // Identity
+    // Identity & Access Control
     public DbSet<User> Users => Set<User>();
+    public DbSet<Role> Roles => Set<Role>();
+    public DbSet<Permission> Permissions => Set<Permission>();
+    public DbSet<UserRole> UserRoles => Set<UserRole>();
+    public DbSet<RolePermission> RolePermissions => Set<RolePermission>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+    public DbSet<LoginHistory> LoginHistories => Set<LoginHistory>();
 
     // Vehicle Core
     public DbSet<VehicleType> VehicleTypes => Set<VehicleType>();

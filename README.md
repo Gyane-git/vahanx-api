@@ -213,3 +213,17 @@ Access Swagger UI at:
 ## License
 
 Proprietary - VahanX
+
+## Authentication & RBAC (development)
+
+JWT authentication is required for `/api/v1/admin/*` endpoints. In
+`Development`, `AuthenticationSeedData` provisions:
+
+- `SUPER_ADMIN` (`SuperAdmin`) role with all permissions
+- All system permissions
+- Development admin user: `admin@vahanx.com` / `VahanX@Dev123!`
+  (from `appsettings.Development.json` `Seed` section)
+
+**Production must set** `Jwt__SigningKey`, `ConnectionStrings__DefaultConnection`,
+and suppress the seed user (remove/override `Seed:AdminPassword`). JWT dev key lives
+in `appsettings.Development.json`. Full contract: `docs/auth-api-contract.md`.

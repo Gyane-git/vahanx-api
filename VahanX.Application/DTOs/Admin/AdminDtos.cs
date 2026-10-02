@@ -58,6 +58,40 @@ public static class AdminPermissions
     public const string AuditView = "AUDIT_VIEW";
     public const string SystemConfigView = "SYSTEM_CONFIG_VIEW";
     public const string SystemConfigManage = "SYSTEM_CONFIG_MANAGE";
+
+    // User management granular permissions
+    public const string UserCreate = "USER_CREATE";
+    public const string UserUpdate = "USER_UPDATE";
+    public const string UserDelete = "USER_DELETE";
+    public const string UserActivate = "USER_ACTIVATE";
+    public const string UserDeactivate = "USER_DEACTIVATE";
+
+    // Role management
+    public const string RoleView = "ROLE_VIEW";
+    public const string RoleCreate = "ROLE_CREATE";
+    public const string RoleUpdate = "ROLE_UPDATE";
+    public const string RoleDelete = "ROLE_DELETE";
+    public const string RoleAssignPermission = "ROLE_ASSIGN_PERMISSION";
+
+    // Permission management
+    public const string PermissionView = "PERMISSION_VIEW";
+
+    // Dealer/Seller management
+    public const string DealerCreate = "DEALER_CREATE";
+    public const string DealerUpdate = "DEALER_UPDATE";
+    public const string DealerDelete = "DEALER_DELETE";
+    public const string SellerCreate = "SELLER_CREATE";
+    public const string SellerUpdate = "SELLER_UPDATE";
+    public const string SellerDelete = "SELLER_DELETE";
+
+    // Reviews / Reports
+    public const string ReviewView = "REVIEW_VIEW";
+    public const string ReportView = "REPORT_VIEW";
+    public const string ReportManage = "REPORT_MANAGE";
+
+    // Identity administration
+    public const string UserRoleAssign = "USER_ROLE_ASSIGN";
+    public const string RolePermissionAssign = "ROLE_PERMISSION_ASSIGN";
 }
 
 /// <summary>

@@ -181,7 +181,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ChargingStationId,
                         principalTable: "ChargingStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,7 +214,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ChargingStationId,
                         principalTable: "ChargingStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,7 +247,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ChargingStationId,
                         principalTable: "ChargingStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -276,7 +276,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.FuelStationId,
                         principalTable: "FuelStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -303,7 +303,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.FuelStationId,
                         principalTable: "FuelStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -332,7 +332,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.FuelStationId,
                         principalTable: "FuelStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -371,7 +371,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ServiceCenterId,
                         principalTable: "ServiceCenters",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -400,13 +400,13 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ConnectorId,
                         principalTable: "ChargingStationConnectors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_ChargingStationAvailability_ChargingStations_ChargingStationId",
                         column: x => x.ChargingStationId,
                         principalTable: "ChargingStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -433,13 +433,13 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.FuelStationFuelTypeId,
                         principalTable: "FuelStationFuelTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_FuelStationAvailability_FuelStations_FuelStationId",
                         column: x => x.FuelStationId,
                         principalTable: "FuelStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -471,13 +471,13 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.FuelStationFuelTypeId,
                         principalTable: "FuelStationFuelTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_FuelStationPrices_FuelStations_FuelStationId",
                         column: x => x.FuelStationId,
                         principalTable: "FuelStations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -508,7 +508,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ServiceCenterBranchId,
                         principalTable: "ServiceCenterBranches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_ServiceCenterServices_ServiceTypes_AutoServiceTypeId",
                         column: x => x.AutoServiceTypeId,
@@ -545,7 +545,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ServiceCenterBranchId,
                         principalTable: "ServiceCenterBranches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -574,7 +574,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ServiceCenterBranchId,
                         principalTable: "ServiceCenterBranches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -663,7 +663,7 @@ namespace VahanX.Infrastructure.Migrations
                         column: x => x.ServicePackageId,
                         principalTable: "ServicePackages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_ServicePackageItems_ServiceTypes_AutoServiceTypeId",
                         column: x => x.AutoServiceTypeId,

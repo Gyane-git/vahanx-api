@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VahanX.Application.Common;
 using VahanX.Application.Common.Interfaces;
 using VahanX.Application.DTOs.Moderation;
 using VahanX.Domain.Enums;
+using VahanX.Application.DTOs.Admin;
 
 namespace VahanX.Api.Controllers.V1;
 
@@ -26,6 +28,7 @@ public class ModerationController : ControllerBase
     // Reports
 
     [HttpGet("reports")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<ReportResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<ReportResponse>>>> GetReports(
         [FromQuery] ModerationReportStatus? status,
@@ -40,6 +43,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpGet("reports/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<ReportResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ApiResponse<ReportResponse>>> GetReportById(Guid id, CancellationToken cancellationToken)
@@ -51,6 +55,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("reports")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ReportResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<ReportResponse>>> CreateReport(
         [FromBody] CreateReportRequest request,
@@ -62,6 +67,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("reports/{id:guid}/assign")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ReportResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ReportResponse>>> AssignReport(
         Guid id,
@@ -73,6 +79,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("reports/{id:guid}/resolve")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ReportResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ReportResponse>>> ResolveReport(
         Guid id,
@@ -84,6 +91,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("reports/{id:guid}/reject")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ReportResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ReportResponse>>> RejectReport(
         Guid id,
@@ -95,6 +103,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("reports/{id:guid}/escalate")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ReportResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ReportResponse>>> EscalateReport(Guid id, CancellationToken cancellationToken)
     {
@@ -105,6 +114,7 @@ public class ModerationController : ControllerBase
     // Cases
 
     [HttpGet("cases")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<ModerationCaseResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<ModerationCaseResponse>>>> GetCases(
         [FromQuery] ModerationCaseStatus? status,
@@ -119,6 +129,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpGet("cases/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<ModerationCaseResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ApiResponse<ModerationCaseResponse>>> GetCaseById(Guid id, CancellationToken cancellationToken)
@@ -130,6 +141,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("cases")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ModerationCaseResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<ModerationCaseResponse>>> CreateCase(
         [FromBody] CreateModerationCaseRequest request,
@@ -140,6 +152,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("cases/{id:guid}/assign")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ModerationCaseResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ModerationCaseResponse>>> AssignCase(
         Guid id,
@@ -151,6 +164,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("cases/{id:guid}/action")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ModerationCaseResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ModerationCaseResponse>>> PerformAction(
         Guid id,
@@ -163,6 +177,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("cases/{id:guid}/resolve")]
+    [Authorize(Policy = AdminPermissions.ReportManage)]
     [ProducesResponseType(typeof(ApiResponse<ModerationCaseResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ModerationCaseResponse>>> ResolveCase(
         Guid id,
@@ -176,6 +191,7 @@ public class ModerationController : ControllerBase
     // Listing Moderation
 
     [HttpGet("listings/pending")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<ListingModerationResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<ListingModerationResponse>>>> GetPendingListings(
         [FromQuery] int page = 1,
@@ -187,6 +203,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("listings/{id:guid}/approve")]
+    [Authorize(Policy = AdminPermissions.ListingModerate)]
     [ProducesResponseType(typeof(ApiResponse<ListingModerationResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ListingModerationResponse>>> ApproveListing(
         Guid id,
@@ -198,6 +215,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("listings/{id:guid}/reject")]
+    [Authorize(Policy = AdminPermissions.ListingReject)]
     [ProducesResponseType(typeof(ApiResponse<ListingModerationResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ListingModerationResponse>>> RejectListing(
         Guid id,
@@ -210,6 +228,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("listings/{id:guid}/hide")]
+    [Authorize(Policy = AdminPermissions.ListingModerate)]
     [ProducesResponseType(typeof(ApiResponse<ListingModerationResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ListingModerationResponse>>> HideListing(
         Guid id,
@@ -222,6 +241,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("listings/{id:guid}/restore")]
+    [Authorize(Policy = AdminPermissions.ListingModerate)]
     [ProducesResponseType(typeof(ApiResponse<ListingModerationResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ListingModerationResponse>>> RestoreListing(
         Guid id,
@@ -235,6 +255,7 @@ public class ModerationController : ControllerBase
     // User Restrictions
 
     [HttpPost("users/{id:guid}/restrict")]
+    [Authorize(Policy = AdminPermissions.UserSuspend)]
     [ProducesResponseType(typeof(ApiResponse<UserRestrictionResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<UserRestrictionResponse>>> CreateUserRestriction(
         Guid id,
@@ -248,6 +269,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpGet("users/{id:guid}/restrictions")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<UserRestrictionResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<UserRestrictionResponse>>>> GetUserRestrictions(
         Guid id,
@@ -260,6 +282,7 @@ public class ModerationController : ControllerBase
     }
 
     [HttpPost("users/restrictions/{id:guid}/deactivate")]
+    [Authorize(Policy = AdminPermissions.UserSuspend)]
     [ProducesResponseType(typeof(ApiResponse<UserRestrictionResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<UserRestrictionResponse>>> DeactivateUserRestriction(Guid id, CancellationToken cancellationToken)
     {
@@ -270,6 +293,7 @@ public class ModerationController : ControllerBase
     // Report Reasons
 
     [HttpGet("report-reasons")]
+    [Authorize(Policy = AdminPermissions.ReportView)]
     [ProducesResponseType(typeof(ApiResponse<IReadOnlyList<ReportReasonResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<IReadOnlyList<ReportReasonResponse>>>> GetReportReasons(
         [FromQuery] TargetType? targetType,

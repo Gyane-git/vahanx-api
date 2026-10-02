@@ -5,15 +5,6 @@ using VahanX.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. CORS Allow Karein
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        policy => policy.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
-});
-
 builder.Host.UseSerilog((context, loggerConfiguration) =>
 {
     loggerConfiguration
@@ -28,16 +19,34 @@ builder.Services.AddApiServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation(builder.Configuration);
 
 var app = builder.Build();
-app.UseCors("AllowAll");
-
-app.UseVahanXApi();
-app.UseSwaggerDocumentation(builder.Configuration);
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
 
+app.UseVahanXApi();
+app.UseSwaggerDocumentation(builder.Configuration);
+
+if (app.Environment.IsDevelopment())
+{
+    // Seed development access-control data (roles, permissions, super admin).
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<VahanX.Infrastructure.Persistence.VahanXDbContext>();
+        try
+        {
+            await VahanX.Infrastructure.Persistence.SeedData.AuthenticationSeedData.SeedAsync(context, builder.Configuration);
+        }
+        catch (Exception ex)
+        {
+            app.Logger.LogWarning(ex, "Authentication seed data could not be applied.");
+        }
+    }
+}
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

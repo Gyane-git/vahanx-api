@@ -14,4 +14,7 @@ public class User : BaseEntity
     public bool IsActive { get; set; } = true;
     public bool EmailConfirmed { get; set; }
     public DateTime? LastLoginAt { get; set; }
+
+    /// <summary>PBKDF2 password hash produced by ASP.NET Core PasswordHasher. Never store plaintext.</summary>
+    public string PasswordHash { get; set; } = string.Empty;
 }

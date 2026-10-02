@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VahanX.Application.Common;
 using VahanX.Application.Common.Interfaces;
 using VahanX.Application.DTOs.Cms;
+using VahanX.Application.DTOs.Admin;
 
 namespace VahanX.Api.Controllers.V1;
 
@@ -25,6 +27,7 @@ public class CmsController : ControllerBase
     // Pages
 
     [HttpPost("pages")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> CreatePage(
         [FromBody] CreatePageRequest request,
@@ -36,6 +39,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("pages")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<PageResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<PageResponse>>>> GetPages(
         [FromQuery] int page = 1,
@@ -47,6 +51,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("pages/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> GetPageById(Guid id, CancellationToken cancellationToken)
@@ -58,6 +63,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPut("pages/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> UpdatePage(
         Guid id,
@@ -70,6 +76,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("pages/{id:guid}/submit")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> SubmitPage(Guid id, CancellationToken cancellationToken)
     {
@@ -78,6 +85,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("pages/{id:guid}/publish")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> PublishPage(
         Guid id,
@@ -89,6 +97,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("pages/{id:guid}/unpublish")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> UnpublishPage(Guid id, CancellationToken cancellationToken)
     {
@@ -97,6 +106,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("pages/{id:guid}/archive")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PageResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PageResponse>>> ArchivePage(Guid id, CancellationToken cancellationToken)
     {
@@ -107,6 +117,7 @@ public class CmsController : ControllerBase
     // Articles
 
     [HttpPost("articles")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> CreateArticle(
         [FromBody] CreateArticleRequest request,
@@ -118,6 +129,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("articles")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<ArticleResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<ArticleResponse>>>> GetArticles(
         [FromQuery] int page = 1,
@@ -129,6 +141,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("articles/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> GetArticleById(Guid id, CancellationToken cancellationToken)
@@ -140,6 +153,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPut("articles/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> UpdateArticle(
         Guid id,
@@ -152,6 +166,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("articles/{id:guid}/submit")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> SubmitArticle(Guid id, CancellationToken cancellationToken)
     {
@@ -160,6 +175,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("articles/{id:guid}/publish")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> PublishArticle(
         Guid id,
@@ -171,6 +187,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("articles/{id:guid}/unpublish")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> UnpublishArticle(Guid id, CancellationToken cancellationToken)
     {
@@ -179,6 +196,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("articles/{id:guid}/archive")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ArticleResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<ArticleResponse>>> ArchiveArticle(Guid id, CancellationToken cancellationToken)
     {
@@ -189,6 +207,7 @@ public class CmsController : ControllerBase
     // Categories
 
     [HttpPost("categories")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<ContentCategoryResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<ContentCategoryResponse>>> CreateCategory(
         [FromBody] CreateContentCategoryRequest request,
@@ -199,6 +218,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("categories")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<IReadOnlyList<ContentCategoryResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<IReadOnlyList<ContentCategoryResponse>>>> GetCategories(CancellationToken cancellationToken)
     {
@@ -209,6 +229,7 @@ public class CmsController : ControllerBase
     // FAQs
 
     [HttpPost("faqs")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<FaqResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<FaqResponse>>> CreateFaq(
         [FromBody] CreateFaqRequest request,
@@ -219,6 +240,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("faqs")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<FaqResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<FaqResponse>>>> GetFaqs(
         [FromQuery] int page = 1,
@@ -230,6 +252,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPut("faqs/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<FaqResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<FaqResponse>>> UpdateFaq(
         Guid id,
@@ -241,6 +264,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpDelete("faqs/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> DeleteFaq(Guid id, CancellationToken cancellationToken)
     {
@@ -251,6 +275,7 @@ public class CmsController : ControllerBase
     // Banners
 
     [HttpPost("banners")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<BannerResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<BannerResponse>>> CreateBanner(
         [FromBody] CreateBannerRequest request,
@@ -261,6 +286,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("banners")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<BannerResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<BannerResponse>>>> GetBanners(
         [FromQuery] int page = 1,
@@ -272,6 +298,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPut("banners/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<BannerResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<BannerResponse>>> UpdateBanner(
         Guid id,
@@ -283,6 +310,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("banners/{id:guid}/activate")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<BannerResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<BannerResponse>>> ActivateBanner(Guid id, CancellationToken cancellationToken)
     {
@@ -291,6 +319,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("banners/{id:guid}/deactivate")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<BannerResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<BannerResponse>>> DeactivateBanner(Guid id, CancellationToken cancellationToken)
     {
@@ -301,6 +330,7 @@ public class CmsController : ControllerBase
     // Promotions
 
     [HttpPost("promotions")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PromotionResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<PromotionResponse>>> CreatePromotion(
         [FromBody] CreatePromotionRequest request,
@@ -311,6 +341,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("promotions")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<PromotionResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<PromotionResponse>>>> GetPromotions(
         [FromQuery] int page = 1,
@@ -322,6 +353,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPut("promotions/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<PromotionResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PromotionResponse>>> UpdatePromotion(
         Guid id,
@@ -335,6 +367,7 @@ public class CmsController : ControllerBase
     // Announcements
 
     [HttpPost("announcements")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<AnnouncementResponse>), StatusCodes.Status201Created)]
     public async Task<ActionResult<ApiResponse<AnnouncementResponse>>> CreateAnnouncement(
         [FromBody] CreateAnnouncementRequest request,
@@ -346,6 +379,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpGet("announcements")]
+    [Authorize(Policy = AdminPermissions.CmsView)]
     [ProducesResponseType(typeof(ApiResponse<PagedResult<AnnouncementResponse>>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<AnnouncementResponse>>>> GetAnnouncements(
         [FromQuery] int page = 1,
@@ -357,6 +391,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPut("announcements/{id:guid}")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<AnnouncementResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<AnnouncementResponse>>> UpdateAnnouncement(
         Guid id,
@@ -368,6 +403,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("announcements/{id:guid}/publish")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<AnnouncementResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<AnnouncementResponse>>> PublishAnnouncement(Guid id, CancellationToken cancellationToken)
     {
@@ -376,6 +412,7 @@ public class CmsController : ControllerBase
     }
 
     [HttpPost("announcements/{id:guid}/unpublish")]
+    [Authorize(Policy = AdminPermissions.CmsManage)]
     [ProducesResponseType(typeof(ApiResponse<AnnouncementResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<AnnouncementResponse>>> UnpublishAnnouncement(Guid id, CancellationToken cancellationToken)
     {
